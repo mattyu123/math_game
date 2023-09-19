@@ -10,7 +10,7 @@ module Question
   end
 end
 
-# Class that 
+# Class that sets up the game
 class Game
   attr_accessor :player1, :player2
   include Question
@@ -36,7 +36,6 @@ class Game
       else 
         puts "This is not right"
         puts 
-        reduce_life = player1.reduce_lives
         player1_lives -= 1
       end
 
@@ -51,7 +50,6 @@ class Game
       else 
         puts "This is not right"
         puts 
-        reduce_life = player2.reduce_lives
         player2_lives -= 1
       end
 
@@ -76,7 +74,6 @@ end
 
 class Player < Game
   include Question
-
   attr_accessor :number_of_lives
 
   def initialize
@@ -87,12 +84,8 @@ class Player < Game
     gets.chomp
   end
 
-  def reduce_lives
-    @number_of_lives -= 1
-    return @number_of_lives
-  end
 end
 
+# Create a new game and run the new game
 new_game = Game.new
-
 new_game.play_the_game
